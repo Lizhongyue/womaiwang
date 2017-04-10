@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/login.css" />
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		
+	</head>
+	<body>
+		<!--头部-->
+		<div class="hrad"></div>
+		<!--Main部分-->
+		<div class="content auto">
+			<div class="main_big">
+				<a href="#">
+					<img src="img/login/login.jpg" />
+				</a>
+			</div>
+			<div class="mian_content">
+				<div class="mc_outside">
+					<div class="mc_inside">
+						<div class="mc_title">请登录中粮我买网</div>
+						<div class="mc_content">
+							<div class="login_e">
+						        <img src="img/login/v-icon-2.png" />
+						        <span>
+							    
+						        </span>
+					        </div>
+							<form>
+								<input type="text" placeholder="用户名/手机号" class="user"/>
+								<input type="password" placeholder="密码" class="pwd"/>
+								<a href="#" class="forget">忘记密码?</a>
+								
+								<div class="height">
+								   
+								    
+								    <input type="button" value="登&nbsp;录" class="btn_left"/>
+								    <a href="register.html" class="btn_right">注&nbsp;册</a>
+								</div>
+								<div class="mci_account">
+									<div class="mcia_title">使用合作伙伴账号登录我买网</div>
+									<ul class="mcia_con">
+										<li class="zl">
+											<i></i>
+											<a href="#">中粮</a>
+										</li>
+										<li class="qq">
+											<i></i>
+											<a href="#">QQ</a>
+										</li>
+										<li class="renren">
+											<i></i>
+											<a href="#">人人网</a>
+										</li>
+										<li class="kaixin last_li">
+											<i></i>
+											<a href="#">开心网</a>
+										</li>
+										<li class="spe_li alipay">
+											<i></i>
+											<a href="#">支付宝</a>
+										</li>
+										<li class="spe_li sina">
+											<i></i>
+											<a href="#">新浪微博</a>
+										</li>
+										<li class="spe_li baidu">
+											<i></i>
+											<a href="#">百度</a>
+										</li>
+										<li class="spe_li ccb last_li">
+											<i></i>
+											<a href="#">建行</a>
+										</li>
+										<li class="spe_li zhide">
+											<i></i>
+											<a href="#">什么值得买</a>
+										</li>
+										<li class="spe_li zhongying">
+											<i></i>
+											<a href="#">中英人寿</a>
+										</li>
+										
+									</ul>
+								</div>
+							</form>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!--尾部-->
+		<div class="foot"></div>
+		
+	</body>
+	<script>
+		$(function()
+		{
+			$(".hrad").load("register.html .head");
+			$(".foot").load("register.html .footer");
+		})
+	</script>
+	<script type="text/javascript" src="js/login.js" ></script>
+</html>

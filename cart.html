@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/cart.css" />
+		<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+		<script type="text/javascript" src="js/doCookie.js" ></script>
+		<<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<!--内容区域-->
+		<div class="cart_content">
+			<div class="header">
+				<div class="w">
+					<ul class="fr">
+						<li class="myaccount">
+							<a href="#" class="ian">我的账户</a>
+							<div class="myaccount_cont">
+								<dl class="myaccount_cont_l">
+									<dt>您还没有登录!</dt>
+									<dd><a href="javascript:;">待付款订单 </a></dd>
+									<dd><a href="javascript:;">待签收订单 </a></dd>
+									<dd><a href="javascript:;">支付卡账户 </a></dd>
+									<dd><a href="javascript:;">优惠券/团购卡</a></dd>
+									<dd><a href="javascript:;">电子礼品卡 </a></dd>
+								</dl>
+								<dl class="myaccount_cont_r">
+									<dt>
+                                       <span><a href="javascript:;" class="iac">登录</a></span>
+									</dt>
+									<dd>
+									    <a href="javascript:;">我的消息</a>
+								    </dd>
+								    <dd>
+									    <a href="javascript:;">我的订单</a>
+								    </dd>
+								    <dd>
+									    <a href="javascript:;">我的积分</a>
+								    </dd>
+								    <dd>
+									   <a href="javascript:;">我的收藏</a>
+								    </dd>
+								</dl>
+								
+							</div>
+						</li>
+					</ul>
+					<ul class="fr">
+						<li class="none">
+							<span class="nickname">Hi,欢迎来我买网,</span>
+							<a href="login.html" class="lo">请登录</a>
+							<a class="quit" style="display:none;">退出</a>
+						</li>
+						<li class="none">
+							<a href="register.html">|&nbsp;&nbsp;&nbsp;&nbsp;免费注册</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="header_div w">
+				<div class="logo_a">
+					<a href="#">
+						<img src="img/cart/header.png" />
+					</a>
+				</div>
+				<ul class="step_ul">
+					<li class="step_1"></li>
+				</ul>
+			</div>
+			
+			<div class="trip_div">
+				<div class="trip_content">
+					<span class="tc_left">我的购物车</span>
+				</div>
+				<div class="delivery_tip fl">
+					<div class="delivery_tit fl">送至:</div>
+					<div class="loadRegion fl">北京</div>
+				</div>
+				<a href="index.html" class="fr">继续购物></a>
+				<div class="clear"></div>
+				
+			</div>
+			<div class="shopping" id="shopping">
+				<div class="order_nav">
+					<ul class="fl">
+						<li class="hover_li">
+							<strong>
+								我买网发货单(<em class="amount">0</em>)
+							</strong>
+							
+						</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+				<div class="order_contents">
+					<div class="order_title">
+						<div class="ordercon_title1">商品</div>
+						<div class="ordercon_title2">单价</div>
+						<div class="ordercon_title3">数量</div>
+						<div class="ordercon_title4">重量</div>
+						<div class="ordercon_title5">小计</div>
+						<div class="ordercon_title6">操作</div>
+					</div>
+					<div class="order_conte">
+						<div class="loadcart">
+							<div class="order_w">
+								<div class="order_title_w">
+									<div class="titl fl">
+										<input type="checkbox" @change="checkboxchange" v-model="checked"/>
+										<span>生鲜品</span>
+										<div class="clear"></div>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="order_w_con">
+
+									<div v-show="item.count!='del'"  class="content_type" v-for="(item,index) in goodsarr" :key=item.id>
+										<div class="ct1 cont1 ct_zp">
+											<div>
+												<input class="fl" type="checkbox" v-model="item.isChecke"/>
+												<a href="#" class="img_a">
+													<img :src="'img/list/'+item.src"/>
+												</a>
+												<div class="fl cont1_cent">
+													<a href="#">{{item.name}}</a>
+													<div class="sevendays">
+														<p class="days">
+															<i></i>
+															<span>不支持七天无理由退换</span>
+														</p>
+														<div class="clear"></div>
+													</div>
+												</div>
+											</div>
+											<div class="clear"></div>
+										</div>
+										<div class="ct1 cont2">
+										￥{{item.price}}
+										</div>
+										<div class="ct1 cont3">
+											<div class="oper reduce" @click="setnum('-',index)"></div>
+											<div class="input_goods">
+												<input v-model="item.count" value="3" class="item_amount"/>
+											</div>
+											<div class="oper plus" @click="setnum('+',index)"></div>
+											<div class="clear"></div>
+										</div>
+										<div class="ct1 cont4">1</div>
+										<div class="ct1 cont5">
+											<span>￥{{(item.price*item.count).toFixed(2)}}</span>
+										</div>
+										<div class="ct1 cont6">
+											<a href="javascript:;">收藏</a><br />
+											<a  @click="deletgoods(index)">删除</a>
+										</div>
+										<div class="clear"></div>
+									</div>
+									
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="order_amount">
+								<div class="fl">
+                                   <div class="edit">
+                                   	   <div class="allcheck fl">
+                                   	   	  <input type="checkbox" @change="checkboxchange" v-model="checked"/>
+                                   	   	  <label >全选</label>
+                                   	   	  <div class="clear"></div>
+                                   	   </div>
+                                   	   <div class="collect fl">
+                                   	   	  <a href="javascript:;">收藏</a>
+                                   	   </div>
+                                   	   <div class="pos fl">
+                                   	   	  <a href="javascript:;">删除</a>
+                                   	   </div>
+                                   	   <div class="clear"></div> 
+                                   </div>
+                                   <div class="sign">
+                                   	   <span>
+                                   	   	  <a href="#">先充值再买单更优惠 充值98折送好礼 满1000再送10元！</a>
+                                   	   </span>
+                                   </div>
+								</div>
+								<div class="ordam_right">
+									<div class="ordam_item1">
+										<span class="oar_title fl">预估运费:</span>
+										<span class="oar_money fl">￥{{titelprice? 10:0}}</span>
+										<div class="clear"></div>
+									</div>
+									<div class="ordam_money">
+										<span class="oar_title fl">商品金额:</span>
+										<span class="oar_money fl money">￥{{titelprice.toFixed(2)}}</span>
+										<div class="clear"></div>
+									</div>
+									<div class="ordam_money ordam_fav">
+										 <span class="oar_title fl">促销优惠:</span>
+										<span class="oar_money fl">－￥0.00</span>
+										<div class="clear"></div>
+									</div>
+									<div class="ordam_total">
+										<span class="num fl">
+											已选<em>{{titelcount}}</em>件
+										</span>
+										<span class="money_total fl">￥{{titelprice? (10+titelprice).toFixed(2):0}}</span>
+										<span class="title_total fl">
+											应付金额：
+										</span>
+										<div class="clear"></div>
+									</div>
+									<div class="btn">
+										<a href="javascript:;" class="fr">去结算</a>
+									</div>
+								</div>
+								<div class="clear"></div>
+							</div>
+							<div class="goods_list">
+								<div class="golist_title">
+									<ul>
+										<li class="current">猜你喜欢</li>
+									</ul>
+								</div>
+								<div class="golist_all">
+									<div class="golist_content">
+										<div class="hidden_content">
+											<ul class="listcon_ul">
+												<li>
+													<div class="product">
+														<a href="javascript:;" class="pocon_a">
+															<img src="img/cart/img1.jpg" />
+														</a>
+														<a href="javascript:;" class="pocon_title">【自营】中粮安至选乌拉圭牛腱子 1*10…</a>
+														<p class="pocon_price">￥59.90</p>
+														<p class="pocon_button">
+															<a href="javascript:;" class="pcb_a">
+																<span>加入购物车</span>
+															</a>
+														</p>
+													</div>
+												</li>
+												<li>
+													<div class="product">
+														<a href="javascript:;" class="pocon_a">
+															<img src="img/cart/img2.jpg" />
+														</a>
+														<a href="javascript:;" class="pocon_title">"【自营】进口菠萝"</a>
+														<p class="pocon_price">￥28.80</p>
+														<p class="pocon_button">
+															<a href="javascript:;" class="pcb_a">
+																<span>加入购物车</span>
+															</a>
+														</p>
+													</div>
+												</li>
+												<li>
+													<div class="product">
+														<a href="javascript:;" class="pocon_a">
+															<img src="img/cart/img3.jpg" />
+														</a>
+														<a href="javascript:;" class="pocon_title">"【自营】进口青苹果(6枚)袋装"</a>
+														<p class="pocon_price">￥31.80</p>
+														<p class="pocon_button">
+															<a href="javascript:;" class="pcb_a">
+																<span>加入购物车</span>
+															</a>
+														</p>
+													</div>
+												</li>
+												<li>
+													<div class="product">
+														<a href="javascript:;" class="pocon_a">
+															<img src="img/cart/img4.jpg" />
+														</a>
+														<a href="javascript:;" class="pocon_title">"【自营】进口吉娜果（22-25枚） 礼盒装"</a>
+														<p class="pocon_price">￥158.00</p>
+														<p class="pocon_button">
+															<a href="javascript:;" class="pcb_a">
+																<span>加入购物车</span>
+															</a>
+														</p>
+													</div>
+												</li>
+												<li>
+													<div class="product">
+														<a href="javascript:;" class="pocon_a">
+															<img src="img/cart/img5.jpg" />
+														</a>
+														<a href="javascript:;" class="pocon_title">【自营】佳沛金色阳光奇异果（12粒装）</a>
+														<p class="pocon_price">￥96.00</p>
+														<p class="pocon_button">
+															<a href="javascript:;" class="pcb_a">
+																<span>加入购物车</span>
+															</a>
+														</p>
+													</div>
+												</li>
+												
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="success_footer w">
+			<div class="anbe">
+				<a href="#">
+					<img src="img/cart/beian.png" />
+					<p style="color:#606060">京公网安备 11010102000458号</p>
+				</a>
+			</div>
+			<span>|</span>京ICP备 13003995号 
+			<span>|</span>营业执照（统一社会信用代码）91110000055590239L 
+			<span>|</span>食品经营许可证：JY11105020028185
+			<p class="copyright">Copyright©2009-2016 我买网上购物 版权所有</p>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/cart.js" ></script>
+</html>

@@ -1,0 +1,27 @@
+*{padding:0; margin:0;}
+body{font:12px/150% Arial,Tahoma,"宋体";color:rgb(96,96,96);}
+a{text-decoration: none;color:#606060;}
+li{list-style:none;}
+img{border:0;display:block;}
+input{outline:none;}
+
+
+/*头部*/
+.auto{width: 1000px; margin: 0 auto;}
+.head{height: 88px; padding-top: 8px;}
+.head .head_logo{width: 210px; height: 80px; float:left; padding-left: 10px;}
+.head .head_adv{width: 780px; height: 80px; float: right;}
+.head .head_line{width: 100%; height: 3px; float: left; 
+           background: url(../img/login/login.png) 0px 0px repeat-x;
+           margin-top: 5px; display: inline; overflow: hidden;}
+.head .clear{clear: both; height: 0px; overflow: hidden; font-size: 0;}
+
+
+/*尾部*/
+.footer{padding-top: 20px; background:#efefef;margin-top:20px;}
+.footer .footop{line-height: 26px; text-align: center;}
+.anbei{display:inline-block; width: 200px;}
+.anbei img{float:left;}
+.anbei p{margin:-4px 0px 0px 5px; color: #606060;}
+.footop span{display:inline-block; margin-top: -4px;}
+.foobootm{height:28px;background:#8cb91e;}

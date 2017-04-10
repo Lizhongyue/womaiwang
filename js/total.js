@@ -1,0 +1,10 @@
+$(function()
+{
+	$(".all_kinds").hover(function()
+	{
+		$(".cont").stop().slideDown();
+	},function()
+	{
+		$(".cont").stop().slideUp();
+	})
+})
